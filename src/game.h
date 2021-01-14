@@ -1,6 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include <memory>
 #include <random>
 
 #include "SDL.h"
@@ -10,15 +11,16 @@
 
 class Game {
  public:
-  Game(std::size_t grid_width, std::size_t grid_height);
-  void Run(Controller const &controller, Renderer &renderer,
-           std::size_t target_frame_duration);
+  Game(std::size_t grid_width, std::size_t grid_height,
+       std::unique_ptr<Renderer>& renderer);
+  void Run(Controller const& controller, std::size_t target_frame_duration);
   int GetScore() const;
   int GetSize() const;
 
  private:
   Snake snake;
   SDL_Point food;
+  std::unique_ptr<Renderer> _renderer{nullptr};
 
   std::random_device dev;
   std::mt19937 engine;
