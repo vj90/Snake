@@ -4,12 +4,11 @@
 
 #include "SDL.h"
 
-Game::Game(std::size_t grid_width, std::size_t grid_height,
-           std::unique_ptr<Renderer>& renderer)
-    : snake(grid_width, grid_height),
+Game::Game(std::unique_ptr<Renderer>& renderer)
+    : snake(renderer->GridWidth(), renderer->GridHeight()),
       engine(dev()),
-      random_w(0, static_cast<int>(grid_width) - 1),
-      random_h(0, static_cast<int>(grid_height) - 1) {
+      random_w(0, static_cast<int>(renderer->GridWidth()) - 1),
+      random_h(0, static_cast<int>(renderer->GridHeight()) - 1) {
   _renderer = std::move(renderer);
   PlaceFood();
 }

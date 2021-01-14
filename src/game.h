@@ -11,8 +11,7 @@
 
 class Game {
  public:
-  Game(std::size_t grid_width, std::size_t grid_height,
-       std::unique_ptr<Renderer>& renderer);
+  Game(std::unique_ptr<Renderer>& renderer);
   void Run(Controller const& controller, std::size_t target_frame_duration);
   int GetScore() const;
   int GetSize() const;
