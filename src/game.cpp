@@ -4,17 +4,17 @@
 
 #include "SDL.h"
 
-Game::Game(std::unique_ptr<Renderer>& renderer)
+Game::Game(std::unique_ptr<Renderer>& renderer, std::unique_ptr<Controller>& controller)
     : snake(renderer->GridWidth(), renderer->GridHeight()),
       engine(dev()),
       random_w(0, static_cast<int>(renderer->GridWidth()) - 1),
       random_h(0, static_cast<int>(renderer->GridHeight()) - 1) {
   _renderer = std::move(renderer);
+  _controller = std::move(controller);
   PlaceFood();
 }
 
-void Game::Run(Controller const& controller,
-               std::size_t target_frame_duration) {
+void Game::Run(std::size_t target_frame_duration) {
   Uint32 title_timestamp = SDL_GetTicks();
   Uint32 frame_start;
   Uint32 frame_end;
@@ -26,7 +26,7 @@ void Game::Run(Controller const& controller,
     frame_start = SDL_GetTicks();
 
     // Input, Update, Render - the main game loop.
-    controller.HandleInput(running, snake);
+    _controller->HandleInput(running, snake);
     Update();
     _renderer->Render(snake, food);
 
