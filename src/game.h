@@ -6,6 +6,7 @@
 
 #include "SDL.h"
 #include "controller.h"
+#include "food.h"
 #include "renderer.h"
 #include "snake.h"
 
@@ -19,16 +20,11 @@ class Game {
 
  private:
   Snake _snake;
-  SDL_Point _food;
+  Food _food;
   std::unique_ptr<Renderer> _renderer{nullptr};
   std::unique_ptr<Controller> _controller{nullptr};
 
-  std::random_device _dev;
-  std::mt19937 _engine;
-  std::uniform_int_distribution<int> _random_w;
-  std::uniform_int_distribution<int> _random_h;
-
-  int score{0};
+  int _score{0};
 
   void PlaceFood();
   void Update();

@@ -64,18 +64,6 @@ void Renderer::FillBlock(int x, int y) {
   SDL_RenderFillRect(_sdl_renderer, &_block);
 }
 
-/*void Renderer::Render(Snake const snake, SDL_Point const &food) {
-      SDL_Rect block;
-
-
-      // Render food
-      SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0xCC, 0x00, 0xFF);
-
-
-
-
-    }*/
-
 void Renderer::UpdateWindowTitle(int score, int fps) {
   std::string title{"Snake Score: " + std::to_string(score) +
                     " FPS: " + std::to_string(fps)};
