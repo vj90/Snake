@@ -4,13 +4,15 @@
 
 #include "SDL.h"
 
-Game::Game(std::unique_ptr<Renderer>& renderer, std::unique_ptr<Controller>& controller)
-    : snake(renderer->GridWidth(), renderer->GridHeight()),
-      engine(dev()),
-      random_w(0, static_cast<int>(renderer->GridWidth()) - 1),
-      random_h(0, static_cast<int>(renderer->GridHeight()) - 1) {
+Game::Game(std::unique_ptr<Renderer>& renderer,
+           std::unique_ptr<Controller>& controller)
+    : _snake(renderer->GridWidth(), renderer->GridHeight()),
+      _engine(dev()),
+      _random_w(0, static_cast<int>(renderer->GridWidth()) - 1),
+      _random_h(0, static_cast<int>(renderer->GridHeight()) - 1) {
   _renderer = std::move(renderer);
   _controller = std::move(controller);
+  snake.SetParentRendererHandle(_renderer.get());
   PlaceFood();
 }
 
@@ -26,9 +28,14 @@ void Game::Run(std::size_t target_frame_duration) {
     frame_start = SDL_GetTicks();
 
     // Input, Update, Render - the main game loop.
-    _controller->HandleInput(running, snake);
+    _controller->HandleInput(running, _snake);
     Update();
-    _renderer->Render(snake, food);
+
+    // Render everything
+    _renderer->ClearScreen();
+    /_snake.Render();
+    _renderer->UpdateScreen();
+    //_renderer->Render(snake, food);
 
     frame_end = SDL_GetTicks();
 
@@ -56,33 +63,33 @@ void Game::Run(std::size_t target_frame_duration) {
 void Game::PlaceFood() {
   int x, y;
   while (true) {
-    x = random_w(engine);
-    y = random_h(engine);
+    x = _random_w(_engine);
+    y = _random_h(_engine);
     // Check that the location is not occupied by a snake item before placing
     // food.
-    if (!snake.SnakeCell(x, y)) {
-      food.x = x;
-      food.y = y;
+    if (!_snake.SnakeCell(x, y)) {
+      _food.x = x;
+      _food.y = y;
       return;
     }
   }
 }
 
 void Game::Update() {
-  if (!snake.alive) return;
+  if (!_snake.alive) return;
 
-  snake.Update();
+  _snake.Update();
 
-  int new_x = static_cast<int>(snake.head_x);
-  int new_y = static_cast<int>(snake.head_y);
+  int new_x = static_cast<int>(_snake.head_x);
+  int new_y = static_cast<int>(_snake.head_y);
 
   // Check if there's food over here
-  if (food.x == new_x && food.y == new_y) {
+  if (_food.x == new_x && _food.y == new_y) {
     score++;
     PlaceFood();
     // Grow snake and increase speed.
-    snake.GrowBody();
-    snake.speed += 0.02;
+    _snake.GrowBody();
+    _snake.speed += 0.02;
   }
 }
 
