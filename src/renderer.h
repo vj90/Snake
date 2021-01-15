@@ -4,7 +4,6 @@
 #include <vector>
 
 #include "SDL.h"
-#include "snake.h"
 
 class Renderer {
  public:
@@ -12,19 +11,25 @@ class Renderer {
            const std::size_t grid_width, const std::size_t grid_height);
   ~Renderer();
 
-  void Render(Snake const snake, SDL_Point const &food);
+  // void Render(/*Snake const snake,*/ SDL_Point const &food);
   void UpdateWindowTitle(int score, int fps);
-  std::size_t GridWidth(){return grid_width;}
-  std::size_t GridHeight(){return grid_height;}
+  void ClearScreen();
+  void UpdateScreen();
+  void FillBlock(int x, int y);
+  void SetColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 255);
+  const std::size_t GridWidth() { return _grid_width; }
+  const std::size_t GridHeight() { return _grid_height; }
+  const SDL_Renderer* const SDLRenderer() { return _sdl_renderer; }
 
  private:
-  SDL_Window *sdl_window;
-  SDL_Renderer *sdl_renderer;
+  SDL_Window* _sdl_window;
+  SDL_Renderer* _sdl_renderer;
 
-  const std::size_t screen_width;
-  const std::size_t screen_height;
-  const std::size_t grid_width;
-  const std::size_t grid_height;
+  const std::size_t _screen_width;
+  const std::size_t _screen_height;
+  const std::size_t _grid_width;
+  const std::size_t _grid_height;
+  SDL_Rect _block;  // helper for filling blocks
 };
 
 #endif
