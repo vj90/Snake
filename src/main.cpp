@@ -15,7 +15,7 @@ int main() {
 
   std::unique_ptr<Renderer> renderer{
       new Renderer(kScreenWidth, kScreenHeight, kGridWidth, kGridHeight)};
-  std::unique_ptr<Controller> controller{new Controller};      
+  std::unique_ptr<Controller> controller{new Controller};
   Game game(renderer, controller);
   game.Run(kMsPerFrame);
   std::cout << "Game has terminated successfully!\n";
