@@ -3,15 +3,16 @@
 
 #include "renderer.h"
 
-class GameComponent{
-  public:
-  virtual void update();
-  virtual void render();
-  protected:
-  Renderer* _parent_renderer_handle;
+class GameComponent {
+ public:
+  void Update();
+  void Render();
+  void SetParentRendererHandle(Renderer* handle) {
+    _parent_renderer_handle = handle;
+  }
 
-}
+ protected:
+  Renderer* _parent_renderer_handle{nullptr};
+};
 
-
-
-#endif // GAME_COMPONENT_H
+#endif  // GAME_COMPONENT_H
