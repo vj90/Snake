@@ -35,8 +35,7 @@ void Game::Run(std::size_t target_frame_duration) {
     _snake.Render();
     _food.Render();
     _renderer->UpdateScreen();
-    //_renderer->Render(snake, food);
-
+    
     frame_end = SDL_GetTicks();
 
     // Keep track of how long each loop through the input/update/render cycle
