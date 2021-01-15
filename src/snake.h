@@ -4,8 +4,9 @@
 #include <vector>
 
 #include "SDL.h"
+#include "game_component.h"
 
-class Snake {
+class Snake : public GameComponent {
  public:
   enum class Direction { kUp, kDown, kLeft, kRight };
 
@@ -16,6 +17,7 @@ class Snake {
         head_y(grid_height / 2) {}
 
   void Update();
+  void Render();
 
   void GrowBody();
   bool SnakeCell(int x, int y);
