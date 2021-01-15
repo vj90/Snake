@@ -18,8 +18,7 @@ class Renderer {
   void SetColor(uint8_t r, uint8_t g, uint8_t b, uint8_t a = 255);
   const std::size_t GridWidth() { return _grid_width; }
   const std::size_t GridHeight() { return _grid_height; }
-  const SDL_Renderer* const SDLRenderer() { return _sdl_renderer; }
-
+  
  private:
   SDL_Window* _sdl_window;
   SDL_Renderer* _sdl_renderer;
