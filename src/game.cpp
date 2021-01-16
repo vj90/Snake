@@ -103,6 +103,11 @@ void Game::Save() {
   saved_game << "Food" << std::endl;
   saved_game << _food;
   saved_game.close();
+  if (_score > _last_high_score) {
+    std::ofstream high_score("high_score.txt");
+    high_score << _score;
+    high_score.close();
+  }
 }
 
 void Game::Menu(Controller::ControllerOutput& game_state) {
@@ -129,8 +134,9 @@ void Game::Menu(Controller::ControllerOutput& game_state) {
           game_state = Controller::ControllerOutput::Game;
         }
         break;
-      case 2:  // Todo clear high score, stay in menu, output that score is
-               // cleared
+      case 2:
+        _last_high_score = 0;
+        std::cout << "High score cleared!" << std::endl;
         break;
       case 3:
         input_handeled = true;
