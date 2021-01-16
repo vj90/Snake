@@ -17,6 +17,8 @@ class Game {
   void Run(std::size_t target_frame_duration);
   int GetScore() const;
   int GetSize() const;
+  void Menu(Controller::ControllerOutput& game_state);
+  void ShowMenuOptions(bool saved_game_available);
 
  private:
   Snake _snake;
