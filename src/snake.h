@@ -19,6 +19,7 @@ class Snake : public GameComponent {
 
   void Update();
   void Render();
+  void Reset();
 
   void GrowBody();
   bool SnakeCell(int x, int y);

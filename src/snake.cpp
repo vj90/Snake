@@ -104,6 +104,13 @@ bool Snake::SnakeCell(int x, int y) {
   return false;
 }
 
+void Snake::Reset() {
+  alive = true;
+  body.clear();
+  head_x = grid_width / 2;
+  head_y = grid_height / 2;
+}
+
 std::ostream &operator<<(std::ostream &os, const Snake &snake) {
   os << snake.head_x << " " << snake.head_y << std::endl;
   for (const auto &pt : snake.body) {

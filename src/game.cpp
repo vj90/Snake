@@ -117,13 +117,15 @@ void Game::Menu(Controller::ControllerOutput& game_state) {
   while (!input_handeled) {
     ShowMenuOptions(saved_game_available);
     std::cin >> i;
-    if (std::cin.fail()){
+    if (std::cin.fail()) {
       std::cin.clear();
-      std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
       i = -1;
     }
     switch (i) {
       case 0:
+        Reset();
+        std::cout << "Starting new game..." << std::endl;
         game_state = Controller::ControllerOutput::Game;  // TODO start new game
         input_handeled = true;
         break;
@@ -165,7 +167,11 @@ void Game::ShowMenuOptions(bool saved_game_available) {
   }
 
   cout << "2: Clear High Score" << endl;
-
   cout << "3: Quit" << endl;
   cout << "4: Exit Menu" << endl;
+}
+
+void Game::Reset() {
+  _snake.Reset();
+  PlaceFood();
 }

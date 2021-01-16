@@ -19,6 +19,7 @@ class Game {
   int GetSize() const;
   void Menu(Controller::ControllerOutput& game_state);
   void ShowMenuOptions(bool saved_game_available);
+  void Reset();
 
  private:
   Snake _snake;
@@ -27,6 +28,7 @@ class Game {
   std::unique_ptr<Controller> _controller{nullptr};
 
   int _score{0};
+  int _last_high_score{0};
 
   void PlaceFood();
   void Update();
