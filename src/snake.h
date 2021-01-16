@@ -21,8 +21,7 @@ class Snake : public GameComponent {
 
   void GrowBody();
   bool SnakeCell(int x, int y);
-
-  Direction direction = Direction::kUp;
+  void SetDirection(Direction input, Direction opposite);
 
   float speed{0.1f};
   int size{1};
@@ -38,6 +37,7 @@ class Snake : public GameComponent {
   bool growing{false};
   int grid_width;
   int grid_height;
+  Direction _direction = Direction::kUp;
 };
 
 #endif

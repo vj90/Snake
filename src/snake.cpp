@@ -22,6 +22,11 @@ void Snake::Update() {
   }
 }
 
+void Snake::SetDirection(Snake::Direction input, Snake::Direction opposite) {
+  // direction does not change to opposite even if snake size is 1
+  _direction = input == opposite ? _direction : input;
+}
+
 void Snake::Render() {
   // Render snake's body
   _parent_renderer_handle->SetColor(0xFF, 0xFF, 0xFF, 0xFF);
@@ -40,7 +45,7 @@ void Snake::Render() {
 }
 
 void Snake::UpdateHead() {
-  switch (direction) {
+  switch (_direction) {
     case Direction::kUp:
       head_y -= speed;
       break;

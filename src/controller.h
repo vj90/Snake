@@ -4,12 +4,12 @@
 #include "snake.h"
 
 class Controller {
+  enum class ControllerOutput { Quit, Game, Menu };
+
  public:
-  void HandleInput(bool &running, Snake &snake) const;
+  void HandleInput(bool& output, Snake& snake) const;
 
  private:
-  void ChangeDirection(Snake &snake, Snake::Direction input,
-                       Snake::Direction opposite) const;
 };
 
 #endif
