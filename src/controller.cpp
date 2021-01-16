@@ -5,36 +5,37 @@
 #include "SDL.h"
 #include "snake.h"
 
-Controller::ControllerOutput Controller::HandleInput(bool &running,
-                                                     Snake &snake) const {
+void Controller::HandleInput(
+    bool &running, Snake &snake,
+    Controller::ControllerOutput &controller_output) const {
   SDL_Event e;
   while (SDL_PollEvent(&e)) {
     if (e.type == SDL_QUIT) {
       running = false;
-      return ControllerOutput::Quit;
+      controller_output = ControllerOutput::Quit;
     } else if (e.type == SDL_KEYDOWN) {
       switch (e.key.keysym.sym) {
         case SDLK_UP:
           snake.SetDirection(Snake::Direction::kUp, Snake::Direction::kDown);
-          return ControllerOutput::Game;
+          controller_output = ControllerOutput::Game;
           break;
 
         case SDLK_DOWN:
           snake.SetDirection(Snake::Direction::kDown, Snake::Direction::kUp);
-          return ControllerOutput::Game;
+          controller_output = ControllerOutput::Game;
           break;
 
         case SDLK_LEFT:
           snake.SetDirection(Snake::Direction::kLeft, Snake::Direction::kRight);
-          return ControllerOutput::Game;
+          controller_output = ControllerOutput::Game;
           break;
 
         case SDLK_RIGHT:
           snake.SetDirection(Snake::Direction::kRight, Snake::Direction::kLeft);
-          return ControllerOutput::Game;
+          controller_output = ControllerOutput::Game;
           break;
-        case SDLK_ESACPE:
-          return ControllerOutput::Menu;
+        case SDLK_ESCAPE:
+          controller_output = ControllerOutput::Menu;
       }
     }
   }

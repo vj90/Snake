@@ -103,3 +103,11 @@ bool Snake::SnakeCell(int x, int y) {
   }
   return false;
 }
+
+std::ostream &operator<<(std::ostream &os, const Snake &snake) {
+  os << snake.head_x << " " << snake.head_y << std::endl;
+  for (const auto &pt : snake.body) {
+    os << pt.x << " " << pt.y << std::endl;
+  }
+  return os;
+}

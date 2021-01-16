@@ -1,6 +1,8 @@
 #include "game.h"
 
+#include <fstream>
 #include <iostream>
+#include <string>
 
 #include "SDL.h"
 
@@ -22,12 +24,13 @@ void Game::Run(std::size_t target_frame_duration) {
   Uint32 frame_duration;
   int frame_count = 0;
   bool running = true;
+  auto game_state = Controller::ControllerOutput::Menu;
 
   while (running) {
     frame_start = SDL_GetTicks();
 
     // Input, Update, Render - the main game loop.
-    _controller->HandleInput(running, _snake);
+    _controller->HandleInput(running, _snake, game_state);
     Update();
 
     // Render everything

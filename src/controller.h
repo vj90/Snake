@@ -4,10 +4,10 @@
 #include "snake.h"
 
 class Controller {
-  enum class ControllerOutput { Quit, Game, Menu };
-
  public:
-  ControllerOutput HandleInput(bool& output, Snake& snake) const;
+  enum class ControllerOutput { Quit, Game, Menu };
+  void HandleInput(bool& output, Snake& snake,
+                   Controller::ControllerOutput& controller_output) const;
 
  private:
 };
