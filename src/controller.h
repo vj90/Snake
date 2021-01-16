@@ -7,7 +7,7 @@ class Controller {
   enum class ControllerOutput { Quit, Game, Menu };
 
  public:
-  void HandleInput(bool& output, Snake& snake) const;
+  ControllerOutput HandleInput(bool& output, Snake& snake) const;
 
  private:
 };
