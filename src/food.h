@@ -9,7 +9,7 @@
 class Food : public GameComponent, public SDL_Point {
  public:
   Food(const std::size_t grid_width, const std::size_t grid_height);
-  void Generate();
+  void Update();
   void Render();
 
  private:

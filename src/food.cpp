@@ -5,7 +5,7 @@ Food::Food(const std::size_t grid_width, const std::size_t grid_height)
       _random_w(0, static_cast<int>(grid_width) - 1),
       _random_h(0, static_cast<int>(grid_height) - 1) {}
 
-void Food::Generate() {
+void Food::Update() {
   this->x = _random_w(_engine);
   this->y = _random_h(_engine);
 }

@@ -60,9 +60,9 @@ void Game::Run(std::size_t target_frame_duration) {
 }
 
 void Game::PlaceFood() {
-  _food.Generate();
+  _food.Update();
   while (_snake.SnakeCell(_food.x, _food.y)) {
-    _food.Generate();
+    _food.Update();
   }
 }
 
