@@ -57,6 +57,7 @@ void Game::Run(std::size_t target_frame_duration) {
       SDL_Delay(target_frame_duration - frame_duration);
     }
   }
+  Save();
 }
 
 void Game::PlaceFood() {
@@ -86,3 +87,12 @@ void Game::Update() {
 
 int Game::GetScore() const { return _score; }
 int Game::GetSize() const { return _snake.size; }
+
+void Game::Save() {
+  std::ofstream saved_game("saved_game.txt");
+  saved_game << "Snake" << std::endl;
+  saved_game << _snake;
+  saved_game << "Food" << std::endl;
+  saved_game << _food;
+  saved_game.close();
+}

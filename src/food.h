@@ -1,6 +1,7 @@
 #ifndef FOOD_H
 #define FOOD_H
 
+#include <iostream>
 #include <random>
 
 #include "SDL.h"
@@ -11,6 +12,7 @@ class Food : public GameComponent, public SDL_Point {
   Food(const std::size_t grid_width, const std::size_t grid_height);
   void Update();
   void Render();
+  friend std::ostream& operator<<(std::ostream& os, const Food& food);
 
  private:
   std::random_device _dev;
@@ -18,5 +20,7 @@ class Food : public GameComponent, public SDL_Point {
   std::uniform_int_distribution<int> _random_w;
   std::uniform_int_distribution<int> _random_h;
 };
+
+std::ostream& operator<<(std::ostream& os, const Food& food);
 
 #endif

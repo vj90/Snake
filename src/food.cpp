@@ -14,3 +14,8 @@ void Food::Render() {
   _parent_renderer_handle->SetColor(0xFF, 0xCC, 0x00, 0xFF);
   _parent_renderer_handle->FillBlock(this->x, this->y);
 }
+
+std::ostream& operator<<(std::ostream& os, const Food& food) {
+  os << food.x << " " << food.y << std::endl;
+  return os;
+}
