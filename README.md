@@ -38,7 +38,7 @@ This is a game of Snake implemented for the Capstone project in the [Udacity C++
 7. The game can be saved on exit if the snake is alive. To exit without saving, press **CTRL+C** during game play.
 
 ## File Structure
-``bash
+```bash
 ── **src**
     ├── **controller.cpp**: *Implementation of Controller class.*
     ├── **controller.h**: *Responsible for handling keyboard input during gameplay*
