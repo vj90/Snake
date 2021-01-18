@@ -3,6 +3,7 @@
 
 #include <memory>
 #include <random>
+#include <string>
 
 #include "SDL.h"
 #include "controller.h"
@@ -15,10 +16,10 @@ class Game {
   Game(std::unique_ptr<Renderer>& renderer,
        std::unique_ptr<Controller>& controller);
   void Run(std::size_t target_frame_duration);
-  int GetScore() const;
-  int GetSize() const;
+  const int GetScore() const;
+  const int GetSize() const;
   void Menu(Controller::ControllerOutput& game_state);
-  void ShowMenuOptions(bool saved_game_available);
+  void ShowMenuOptions(bool saved_game_available) const;
   void Reset();
 
  private:
@@ -33,6 +34,9 @@ class Game {
   void PlaceFood();
   void Update();
   void Save();
+  void ReadHighScore();
+  std::string _game_file{"saved_game.txt"};
+  std::string _high_score_file{"saved_game.txt"};
 };
 
 #endif

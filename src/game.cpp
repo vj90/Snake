@@ -2,6 +2,7 @@
 
 #include <fstream>
 #include <iostream>
+#include <sstream>
 #include <string>
 
 #include "SDL.h"
@@ -52,7 +53,7 @@ void Game::Run(std::size_t target_frame_duration) {
 
       // After every second, update the window title.
       if (frame_end - title_timestamp >= 1000) {
-        _renderer->UpdateWindowTitle(_score, frame_count);
+        _renderer->UpdateWindowTitle(_score, frame_count, _last_high_score);
         frame_count = 0;
         title_timestamp = frame_end;
       }
@@ -93,8 +94,8 @@ void Game::Update() {
   }
 }
 
-int Game::GetScore() const { return _score; }
-int Game::GetSize() const { return _snake.size; }
+const int Game::GetScore() const { return _score; }
+const int Game::GetSize() const { return _snake.size; }
 
 void Game::Save() {
   std::ofstream saved_game("saved_game.txt");
@@ -104,7 +105,7 @@ void Game::Save() {
   saved_game << _food;
   saved_game.close();
   if (_score > _last_high_score) {
-    std::ofstream high_score("high_score.txt");
+    std::ofstream high_score(_game_file);
     high_score << _score;
     high_score.close();
   }
@@ -155,7 +156,7 @@ void Game::Menu(Controller::ControllerOutput& game_state) {
   }
 }
 
-void Game::ShowMenuOptions(bool saved_game_available) {
+void Game::ShowMenuOptions(bool saved_game_available) const {
   using std::cout;
   using std::endl;
   cout << "-------SNAKE-------" << endl;
@@ -174,4 +175,14 @@ void Game::ShowMenuOptions(bool saved_game_available) {
 void Game::Reset() {
   _snake.Reset();
   PlaceFood();
+}
+
+void Game::ReadHighScore() {
+  std::ifstream high_score_file(_high_score_file);
+  if (high_score_file.is_open()) {
+    std::string line;
+    std::getline(high_score_file, line);
+    std::istringstream stream(line);
+    stream >> _last_high_score;
+  }
 }

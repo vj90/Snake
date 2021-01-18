@@ -64,8 +64,11 @@ void Renderer::FillBlock(int x, int y) {
   SDL_RenderFillRect(_sdl_renderer, &_block);
 }
 
-void Renderer::UpdateWindowTitle(int score, int fps) {
-  std::string title{"Snake Score: " + std::to_string(score) +
-                    " FPS: " + std::to_string(fps)};
+void Renderer::UpdateWindowTitle(const int score, const int fps,
+                                 const int high_score) {
+  std::string title{"Score: " + std::to_string(score) +               //
+                    "   High Score: " + std::to_string(high_score) +  //
+                    "   FPS: " + std::to_string(fps) +                //
+                    "   Esc: Menu"};
   SDL_SetWindowTitle(_sdl_window, title.c_str());
 }

@@ -11,7 +11,7 @@ class Renderer {
            const std::size_t grid_width, const std::size_t grid_height);
   ~Renderer();
 
-  void UpdateWindowTitle(int score, int fps);
+  void UpdateWindowTitle(const int score, const int fps, const int high_score);
   void ClearScreen();
   void UpdateScreen();
   void FillBlock(int x, int y);
