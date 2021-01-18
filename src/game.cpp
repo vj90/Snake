@@ -164,9 +164,9 @@ void Game::ShowMenuOptions() const {
   cout << "Choose an option: " << endl;
   cout << "0: Start new game" << endl;
   cout << "1: Load last game" << endl;
-  cout << "2: Clear High Score" << endl;
+  cout << "2: Clear high score" << endl;
   cout << "3: Save and quit" << endl;
-  cout << "4: Exit Menu" << endl;
+  cout << "4: Exit menu" << endl;
 }
 
 void Game::Reset() {
