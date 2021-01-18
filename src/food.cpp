@@ -32,8 +32,8 @@ const bool Food::FromFile(const std::string line) {
 }
 
 std::ostream& operator<<(std::ostream& os, const Food& food) {
-  os << "<Food>";
+  os << "<Food> ";
   os << food.x << " " << food.y;
-  os << "<\\Food>\n";
+  os << " <\\Food>\n";
   return os;
 }
