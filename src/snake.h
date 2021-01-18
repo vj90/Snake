@@ -17,10 +17,10 @@ class Snake : public GameComponent {
         head_x(grid_width / 2),
         head_y(grid_height / 2) {}
 
-  void Update();
-  void Render();
+  void Update() override;
+  void Render() override;
   void Reset();
-  const bool FromFile(const std::string line);
+  const bool FromFile(const std::string line) override;
 
   void GrowBody();
   bool SnakeCell(int x, int y);

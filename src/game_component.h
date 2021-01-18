@@ -5,9 +5,9 @@
 
 class GameComponent {
  public:
-  void Update();
-  void Render();
-  const bool FromFile(const std::string line);
+  virtual void Update(){}
+  virtual void Render(){}
+  virtual const bool FromFile(const std::string line){ return false;}
   void SetParentRendererHandle(Renderer* handle) {
     _parent_renderer_handle = handle;
   }
