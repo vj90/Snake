@@ -39,19 +39,19 @@ This is a game of Snake implemented for the Capstone project in the [Udacity C++
 
 ## File Structure
 ```
-── **src**
-    ├── **controller.cpp**: *Implementation of Controller class.*
-    ├── **controller.h**: *Responsible for handling keyboard input during gameplay*
-    ├── **food.cpp**: *Implementation of Food class.*
-    ├── **food.h**: *Inherits from GameComponent class. Food is generated randomly in each game loop.*
-    ├── **game_component.h**: *Virtual base class for componenets of the game that are updated and rendered in tehh game loop. Holds the pointer to the renderer of the parent Game class.*
-    ├── **game.cpp**: *Implementation of game class*
-    ├── **game.h**: *The Game class consists of a renderer, controller and game componenets such (snake and food). Controlls the game loop, updates food and snake, displays a menu when called, and optionally saves the game on                                          exit.*
-    ├── **main.cpp**: *Initializes renderer and controller, starts the game. Displays the score on termination.*
-    ├── **renderer.cpp**: *Implementation of the Renderer class.*
-    ├── **renderer.h**: *The renderer class creates the game window and renders the game componenets. The title window shows the current score, high score, fps, keyboard shortcut for the Menu.*
-    ├── **snake.cpp**: *Implementation of the Snake class."
-    └── **snake.h**: *The snake class inherits from the GameComponent class and consists of a head, body and other snake attributes.*
+── src
+    ├── controller.cpp: Implementation of Controller class.
+    ├── controller.h: Responsible for handling keyboard input during gameplay
+    ├── food.cpp: Implementation of Food class.
+    ├── food.h: Inherits from GameComponent class. Food is generated randomly in each game loop.
+    ├── game_component.h: Virtual base class for componenets of the game that are updated and rendered in tehh game loop. Holds the pointer to the renderer of the parent Game class.
+    ├── game.cpp: Implementation of game class
+    ├── game.h: The Game class consists of a renderer, controller and game componenets such (snake and food). Controlls the game loop, updates food and snake, displays a menu when called, and optionally saves the game on                                          exit.
+    ├── main.cpp: Initializes renderer and controller, starts the game. Displays the score on termination.
+    ├── renderer.cpp: Implementation of the Renderer class.
+    ├── renderer.h: The renderer class creates the game window and renders the game componenets. The title window shows the current score, high score, fps, keyboard shortcut for the Menu.
+    ├── snake.cpp: Implementation of the Snake class."
+    └── snake.h: The snake class inherits from the GameComponent class and consists of a head, body and other snake attributes.
 ```
 
 
