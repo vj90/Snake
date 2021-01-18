@@ -26,7 +26,7 @@ void Snake::Update() {
 
 void Snake::SetDirection(Snake::Direction input, Snake::Direction opposite) {
   // direction does not change to opposite even if snake size is 1
-  _direction = input == opposite ? _direction : input;
+  _direction = _direction == opposite ? _direction : input;
 }
 
 void Snake::Render() {
