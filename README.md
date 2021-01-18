@@ -28,6 +28,7 @@ This is a game of Snake implemented for the Capstone project in the [Udacity C++
 
 ## Game Play
 1. Start the game with `./SnakeGame`from a terminal. A menu is displayed:
+
     <img src="menu.png"/>
 2. Choose one of the options by typing the corresponding number.
 3. In case (1: Load last game) is chosen, the game tries to load the last saved game. If unsuccessful, a new game is started.
