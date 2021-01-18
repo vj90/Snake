@@ -30,6 +30,7 @@ void Game::Run(std::size_t target_frame_duration) {
 
   while (game_state != Controller::ControllerOutput::Quit) {
     while (game_state == Controller::ControllerOutput::Menu) {
+      Game::Pause();
       Menu(game_state);
     }
     while (game_state == Controller::ControllerOutput::Game) {
@@ -99,6 +100,9 @@ const int Game::GetScore() const { return _score; }
 const int Game::GetSize() const { return static_cast<int>(_snake.Size()); }
 
 void Game::Save() {
+  if (!_snake.alive || !_save_on_exit){
+    return;
+  }
   std::ofstream saved_game(_game_file);
   saved_game << _snake;
   saved_game << _food;
@@ -142,6 +146,7 @@ void Game::Menu(Controller::ControllerOutput& game_state) {
       case 3:
         input_handeled = true;
         game_state = Controller::ControllerOutput::Quit;
+        _save_on_exit = true;
         break;
       case 4:
         input_handeled = true;
@@ -162,7 +167,7 @@ void Game::ShowMenuOptions(bool saved_game_available) const {
   cout << "0: Start new game" << endl;
   cout << "1: Load last game" << endl;
   cout << "2: Clear High Score" << endl;
-  cout << "3: Quit" << endl;
+  cout << "3: Save and quit" << endl;
   cout << "4: Exit Menu" << endl;
 }
 

@@ -30,6 +30,7 @@ class Game {
 
   int _score{0};
   int _last_high_score{0};
+  bool _save_on_exit{false};
 
   void PlaceFood();
   void Update();
