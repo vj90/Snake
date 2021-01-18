@@ -96,12 +96,13 @@ void Game::Update() {
 }
 
 const int Game::GetScore() const { return _score; }
-const int Game::GetSize() const { return _snake.size; }
+const int Game::GetSize() const { return static_cast<int>(_snake.Size()); }
 
 void Game::Save() {
   std::ofstream saved_game(_game_file);
   saved_game << _snake;
   saved_game << _food;
+  saved_game << "<Score> " << _score << " <\\Score>" << std::endl;
   saved_game.close();
   if (_score > _last_high_score) {
     std::ofstream high_score(_high_score_file);
@@ -195,6 +196,9 @@ void Game::LoadSavedGame() {
       }
       if (start == "<Food>") {
         food_successful = _food.FromFile(std::move(line));
+      }
+      if (start == "<Score>") {
+        stream >> _score;
       }
     }
   }
