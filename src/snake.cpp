@@ -140,11 +140,11 @@ const bool Snake::FromFile(const std::string line) {
 
 std::ostream &operator<<(std::ostream &os, const Snake &snake) {
   os << "<Snake> ";
-  os << snake.body.size() << ";";
-  os << snake.speed << ";";
-  os << snake.head_x << ", " << snake.head_y << "; ";
+  os << snake.body.size() << " ; ";
+  os << snake.speed << " ; ";
+  os << snake.head_x << " " << snake.head_y << " ; ";
   for (const auto &pt : snake.body) {
-    os << pt.x << " " << pt.y << "; ";
+    os << pt.x << " " << pt.y << " ; ";
   }
   os << " <\\Snake>\n";
   return os;
