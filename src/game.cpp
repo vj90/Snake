@@ -15,6 +15,7 @@ Game::Game(std::unique_ptr<Renderer>& renderer,
   _controller = std::move(controller);
   _snake.SetParentRendererHandle(_renderer.get());
   _food.SetParentRendererHandle(_renderer.get());
+  ReadHighScore();
   PlaceFood();
 }
 
