@@ -19,7 +19,7 @@ class Game {
   const int GetScore() const;
   const int GetSize() const;
   void Menu(Controller::ControllerOutput& game_state);
-  void ShowMenuOptions(bool saved_game_available) const;
+  void ShowMenuOptions() const;
   void Reset();
 
  private:

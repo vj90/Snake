@@ -20,7 +20,7 @@ class Snake : public GameComponent {
   void Update() override;
   void Render() override;
   void Reset();
-  const bool FromFile(const std::string line) override;
+  const bool FromFile(const std::string& line) override;
 
   void GrowBody();
   bool SnakeCell(int x, int y);

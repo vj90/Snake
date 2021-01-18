@@ -159,7 +159,7 @@ void Game::Menu(Controller::ControllerOutput& game_state) {
   }
 }
 
-void Game::ShowMenuOptions(bool saved_game_available) const {
+void Game::ShowMenuOptions() const {
   using std::cout;
   using std::endl;
   cout << "-------SNAKE-------" << endl;
@@ -197,20 +197,18 @@ void Game::LoadSavedGame() {
       std::istringstream stream(line);
       stream >> start;
       if (start == "<Snake>") {
-        snake_successful = _snake.FromFile(std::move(line));
+        snake_successful = _snake.FromFile(line);
       }
       if (start == "<Food>") {
-        food_successful = _food.FromFile(std::move(line));
+        food_successful = _food.FromFile(line);
       }
       if (start == "<Score>") {
         stream >> _score;
       }
     }
   }
-  if (snake_successful) {
-    if (food_successful) {
+  if (snake_successful && food_successful)  {
       std::cout << "Loading last game\n";
-    }
   } else {
     std::cout << "Could not load last game, starting new game\n";
     Reset();

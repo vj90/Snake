@@ -19,7 +19,7 @@ void Food::Render() {
   _parent_renderer_handle->FillBlock(this->x, this->y);
 }
 
-const bool Food::FromFile(const std::string line) {
+const bool Food::FromFile(const std::string& line) {
   bool read_successful{false};
   std::istringstream stream(line);
   std::string start;
