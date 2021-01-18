@@ -44,7 +44,7 @@ This is a game of Snake implemented for the Capstone project in the [Udacity C++
     ├── controller.h: Responsible for handling keyboard input during gameplay
     ├── food.cpp: Implementation of Food class.
     ├── food.h: Inherits from GameComponent class. Food is generated randomly in each game loop.
-    ├── game_component.h: Virtual base class for componenets of the game that are updated and rendered in tehh game loop. Holds the pointer to the renderer of the parent Game class.
+    ├── game_component.h: Virtual base class for componenets of the game that are updated and rendered in the game loop. Holds the pointer to the renderer of the parent Game class.
     ├── game.cpp: Implementation of game class
     ├── game.h: The Game class consists of a renderer, controller and game componenets such (snake and food). Controlls the game loop, updates food and snake, displays a menu when called, and optionally saves the game on                                          exit.
     ├── main.cpp: Initializes renderer and controller, starts the game. Displays the score on termination.
