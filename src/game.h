@@ -36,6 +36,7 @@ class Game {
   void Save();
   void ReadHighScore();
   void LoadSavedGame();
+  void Pause();
   std::string _game_file{"saved_game.txt"};
   std::string _high_score_file{"high_score.txt"};
 };

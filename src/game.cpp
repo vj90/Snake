@@ -211,3 +211,7 @@ void Game::LoadSavedGame() {
     Reset();
   }
 }
+
+void Game::Pause(){
+  _snake.SetDirection(Snake::Direction::kPause, Snake::Direction::kPause);
+}
