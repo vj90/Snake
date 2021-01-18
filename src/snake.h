@@ -9,7 +9,7 @@
 
 class Snake : public GameComponent {
  public:
-  enum class Direction { kUp, kDown, kLeft, kRight };
+  enum class Direction { kUp, kDown, kLeft, kRight, kPause };
 
   Snake(int grid_width, int grid_height)
       : grid_width(grid_width),

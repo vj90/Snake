@@ -63,6 +63,10 @@ void Snake::UpdateHead() {
     case Direction::kRight:
       head_x += speed;
       break;
+    
+    case Direction::kPause:
+      // Do nothing
+      break; 
   }
 
   // Wrap the Snake around to the beginning if going off of the screen.
