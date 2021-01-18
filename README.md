@@ -33,9 +33,9 @@ This is a game of Snake implemented for the Capstone project in the [Udacity C++
 ## Rubric Points Addressed
 
 ### README (All Rubric Points REQUIRED)
-A README with instructions is included with the project
-The README indicates which project is chosen.
-The README includes information about each rubric point addressed.
+1. A README with instructions is included with the project
+2. The README indicates which project is chosen.
+3. The README includes information about each rubric point addressed.
 
 ### Compiling and Testing (All Rubric Points REQUIRED)
 The submission must compile and run.
