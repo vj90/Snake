@@ -98,14 +98,11 @@ const int Game::GetScore() const { return _score; }
 const int Game::GetSize() const { return _snake.size; }
 
 void Game::Save() {
-  std::ofstream saved_game("saved_game.txt");
-  saved_game << "Snake" << std::endl;
+  std::ofstream saved_game(_game_file);
   saved_game << _snake;
-  saved_game << "Food" << std::endl;
   saved_game << _food;
   saved_game.close();
-  if (_score > _last_high_score) {
-    std::ofstream high_score(_game_file);
+    std::ofstream high_score(_high_score_file);
     high_score << _score;
     high_score.close();
   }
