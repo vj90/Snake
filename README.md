@@ -2,8 +2,6 @@
 
 This is a game of Snake implemented for the Capstone project in the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). The code for this repo was inspired by [this](https://codereview.stackexchange.com/questions/212296/snake-game-in-c-with-sdl) excellent StackOverflow post and set of responses.
 
-<img src="snake_game.gif"/>
-
 ## Dependencies for Running Locally
 * cmake >= 3.7
   * All OSes: [click here for installation instructions](https://cmake.org/install/)
@@ -32,9 +30,11 @@ This is a game of Snake implemented for the Capstone project in the [Udacity C++
     <img src="menu.png"/>
 2. Choose one of the options by typing the corresponding number.
 3. In case (1: Load last game) is chosen, the game tries to load the last saved game. If unsuccessful, a new game is started.
-4. The game starts in paused mode. Press one of the arrow keys to starts.
+4. The game starts in paused mode. Press one of the arrow keys to start.
+    
+    <img src="game.png"/>
 5. Try to beat the high score! The high score is saved at the end of the game.
-6. Press *Esc* to show the menu. The menu is displayed in the terminal. The game is paused
+6. Press *Esc* to show the menu. The menu is displayed in the terminal. The game is paused.
 7. The game can be saved on exit if the snake is alive.
 
 ## File Structure
