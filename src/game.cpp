@@ -128,11 +128,9 @@ void Game::Menu(Controller::ControllerOutput& game_state) {
         input_handeled = true;
         break;
       case 1:
-        if (saved_game_available) {
-          // Load game
-          input_handeled = true;
-          game_state = Controller::ControllerOutput::Game;
-        }
+        LoadSavedGame();
+        input_handeled = true;
+        game_state = Controller::ControllerOutput::Game;
         break;
       case 2:
         _last_high_score = 0;
@@ -159,11 +157,7 @@ void Game::ShowMenuOptions(bool saved_game_available) const {
   cout << "-------SNAKE-------" << endl;
   cout << "Choose an option: " << endl;
   cout << "0: Start new game" << endl;
-
-  if (saved_game_available) {
-    cout << "1: Load last game" << endl;
-  }
-
+  cout << "1: Load last game" << endl;
   cout << "2: Clear High Score" << endl;
   cout << "3: Quit" << endl;
   cout << "4: Exit Menu" << endl;
@@ -181,5 +175,33 @@ void Game::ReadHighScore() {
     std::getline(high_score_file, line);
     std::istringstream stream(line);
     stream >> _last_high_score;
+  }
+}
+
+void Game::LoadSavedGame() {
+  bool snake_successful{false};
+  bool food_successful{false};
+  std::ifstream saved_game_file(_game_file);
+  if (saved_game_file.is_open()) {
+    std::string line;
+    std::string start;
+    while (std::getline(saved_game_file, line)) {
+      std::istringstream stream(line);
+      stream >> start;
+      if (start == "<Snake>") {
+        snake_successful = _snake.FromFile(std::move(line));
+      }
+      if (start == "<Food>") {
+        food_successful = _food.FromFile(std::move(line));
+      }
+    }
+  }
+  if (snake_successful) {
+    if (food_successful) {
+      std::cout << "Loading last game\n";
+    }
+  } else {
+    std::cout << "Could not load last game, starting new game\n";
+    Reset();
   }
 }
