@@ -34,8 +34,8 @@ This is a game of Snake implemented for the Capstone project in the [Udacity C++
     
     <img src="game.png"/>
 5. Try to beat the high score! The high score is saved at the end of the game.
-6. Press *Esc* to show the menu. The menu is displayed in the terminal. The game is paused.
-7. The game can be saved on exit if the snake is alive.
+6. Press **Esc** to show the menu. The menu is displayed in the terminal. The game is paused.
+7. The game can be saved on exit if the snake is alive. To exit without saving, press **CTRL+C** during game play.
 
 ## File Structure
 └── **src**
