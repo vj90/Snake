@@ -26,9 +26,32 @@ This is a game of Snake implemented for the Capstone project in the [Udacity C++
 3. Compile: `cmake .. && make`
 4. Run it: `./SnakeGame`.
 
-## File Structure
+## Game Play
+1. Start the game with `./SnakeGame`from a terminal. A menu is displayed:
+<img src="menu.png"/>
+2. Choose one of the options by typing the corresponding number.
+3. In case (1: Load last game) is chosen, the game tries to load the last saved game. If unsuccessful, a new game is started.
+4. The game starts in paused mode. Press one of the arrow keys to starts.
+5. Try to beat the high score! The high score is saved at the end of the game.
+6. Press *Esc* to show the menu. The menu is displayed in the terminal. The game is paused
+7. The game can be saved on exit if the snake is alive.
 
-## Class Structure
+## File Structure
+└── **src**
+    ├── **controller.cpp**: *Implementation of Controller class.*
+    ├── **controller.h**: *Responsible for handling keyboard input during gameplay*
+    ├── **food.cpp**: *Implementation of Food class.*
+    ├── **food.h**: *Inherits from GameComponent class. Food is generated randomly in each game loop.*
+    ├── **game_component.h**: *Virtual base class for componenets of the game that are updated and rendered in tehh game loop. Holds the pointer to the renderer of the parent Game class.*
+    ├── **game.cpp**: *Implementation of game class*
+    ├── **game.h**: *The Game class consists of a renderer, controller and game componenets such (snake and food). Controlls the game loop, updates food and snake, displays a menu when called, and optionally saves the game on                                          exit.*
+    ├── **main.cpp**: *Initializes renderer and controller, starts the game. Displays the score on termination.*
+    ├── **renderer.cpp**: *Implementation of the Renderer class.*
+    ├── **renderer.h**: *The renderer class creates the game window and renders the game componenets. The title window shows the current score, high score, fps, keyboard shortcut for the Menu.*
+    ├── **snake.cpp**: *Implementation of the Snake class."
+    └── **snake.h**: *The snake class inherits from the GameComponent class and consists of a head, body and other snake attributes.*
+
+
 
 ## Rubric Points Addressed
 
