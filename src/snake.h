@@ -25,7 +25,7 @@ class Snake : public GameComponent {
   void GrowBody();
   bool SnakeCell(int x, int y);
   void SetDirection(Direction input, Direction opposite);
-  const std::size_t Size() const {return body.size()+1;}
+  const std::size_t Size() const { return body.size() + 1; }
 
   float speed{0.1f};
   bool alive{true};

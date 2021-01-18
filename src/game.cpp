@@ -100,14 +100,13 @@ const int Game::GetScore() const { return _score; }
 const int Game::GetSize() const { return static_cast<int>(_snake.Size()); }
 
 void Game::Save() {
-  if (!_snake.alive || !_save_on_exit){
-    return;
+  if (_snake.alive && _save_on_exit) {
+    std::ofstream saved_game(_game_file);
+    saved_game << _snake;
+    saved_game << _food;
+    saved_game << "<Score> " << _score << " <\\Score>" << std::endl;
+    saved_game.close();
   }
-  std::ofstream saved_game(_game_file);
-  saved_game << _snake;
-  saved_game << _food;
-  saved_game << "<Score> " << _score << " <\\Score>" << std::endl;
-  saved_game.close();
   if (_score > _last_high_score) {
     std::ofstream high_score(_high_score_file);
     high_score << _score;
@@ -206,14 +205,14 @@ void Game::LoadSavedGame() {
       }
     }
   }
-  if (snake_successful && food_successful)  {
-      std::cout << "Loading last game\n";
+  if (snake_successful && food_successful) {
+    std::cout << "Loading last game\n";
   } else {
     std::cout << "Could not load last game, starting new game\n";
     Reset();
   }
 }
 
-void Game::Pause(){
+void Game::Pause() {
   _snake.SetDirection(Snake::Direction::kPause, Snake::Direction::kPause);
 }

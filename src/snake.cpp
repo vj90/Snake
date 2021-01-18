@@ -63,10 +63,10 @@ void Snake::UpdateHead() {
     case Direction::kRight:
       head_x += speed;
       break;
-    
+
     case Direction::kPause:
       // Do nothing
-      break; 
+      break;
   }
 
   // Wrap the Snake around to the beginning if going off of the screen.
@@ -117,7 +117,7 @@ void Snake::Reset() {
   head_y = grid_height / 2;
 }
 
-const bool Snake::FromFile(const std::string& line) {
+const bool Snake::FromFile(const std::string &line) {
   bool read_successful{false};
   Reset();
   std::istringstream stream(line);
