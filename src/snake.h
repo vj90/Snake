@@ -20,6 +20,7 @@ class Snake : public GameComponent {
   void Update();
   void Render();
   void Reset();
+  const bool FromFile(const std::string line);
 
   void GrowBody();
   bool SnakeCell(int x, int y);

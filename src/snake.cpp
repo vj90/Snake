@@ -2,6 +2,8 @@
 
 #include <cmath>
 #include <iostream>
+#include <sstream>
+#include <string>
 
 #include "SDL.h"
 
@@ -112,10 +114,38 @@ void Snake::Reset() {
   head_y = grid_height / 2;
 }
 
-std::ostream &operator<<(std::ostream &os, const Snake &snake) {
-  os << snake.head_x << " " << snake.head_y << std::endl;
-  for (const auto &pt : snake.body) {
-    os << pt.x << " " << pt.y << std::endl;
+const bool Snake::FromFile(const std::string line) {
+  bool read_successful{false};
+  Reset();
+  std::istringstream stream(line);
+  std::string start;
+  std::string seperator;
+  std::size_t snake_body_size{0};
+  SDL_Point point;
+  if (stream >> start && start == "<Snake>") {
+    // Read size and head
+    if (stream >> snake_body_size >> seperator >> this->speed >> seperator >>
+        this->head_x >> this->head_y >> seperator) {
+      // Head successful, read rest of the body
+      while (stream >> point.x >> point.y >> seperator) {
+        body.push_back(point);
+      }
+    }
   }
+  if (body.size() == snake_body_size) {
+    read_successful = true;
+  }
+  return read_successful;
+}
+
+std::ostream &operator<<(std::ostream &os, const Snake &snake) {
+  os << "<Snake>";
+  os << snake.body.size() << ";";
+  os << snake.speed << ";";
+  os << snake.head_x << ", " << snake.head_y << "; ";
+  for (const auto &pt : snake.body) {
+    os << pt.x << " " << pt.y << "; ";
+  }
+  os << "<\\Snake>";
   return os;
 }
