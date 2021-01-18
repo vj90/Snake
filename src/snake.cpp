@@ -146,6 +146,6 @@ std::ostream &operator<<(std::ostream &os, const Snake &snake) {
   for (const auto &pt : snake.body) {
     os << pt.x << " " << pt.y << "; ";
   }
-  os << "<\\Snake>";
+  os << "<\\Snake>\n";
   return os;
 }
