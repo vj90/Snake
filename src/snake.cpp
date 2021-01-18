@@ -84,7 +84,6 @@ void Snake::UpdateBody(SDL_Point &current_head_cell,
     body.erase(body.begin());
   } else {
     growing = false;
-    size++;
   }
 
   // Check if the snake has died.
