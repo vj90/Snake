@@ -39,7 +39,7 @@ This is a game of Snake implemented for the Capstone project in the [Udacity C++
 
 ## File Structure
 +--**src**
-|   +--**controller.cpp**: *Implementation of Controller class.*
+    +--**controller.cpp**: *Implementation of Controller class.*
 |   +--**controller.h**: *Responsible for handling keyboard input during gameplay*
 |   +-- **food.cpp**: *Implementation of Food class.*
 |   +-- **food.h**: *Inherits from GameComponent class. Food is generated randomly in each game loop.*
