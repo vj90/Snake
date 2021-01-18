@@ -1,5 +1,9 @@
 #include "food.h"
 
+#include <iostream>
+#include <sstream>
+#include <string>
+
 Food::Food(const std::size_t grid_width, const std::size_t grid_height)
     : _engine(_dev()),
       _random_w(0, static_cast<int>(grid_width) - 1),
@@ -15,7 +19,21 @@ void Food::Render() {
   _parent_renderer_handle->FillBlock(this->x, this->y);
 }
 
+const bool Food::FromFile(const std::string line) {
+  bool read_successful{false};
+  std::istringstream stream(line);
+  std::string start;
+  if (stream >> start && start == "<Food>") {
+    if (stream >> this->x >> this->y) {
+      read_successful = true;
+    }
+  }
+  return read_successful;
+}
+
 std::ostream& operator<<(std::ostream& os, const Food& food) {
-  os << food.x << " " << food.y << std::endl;
+  os << "<Food>";
+  os << food.x << " " << food.y;
+  os << "<\\Food>";
   return os;
 }

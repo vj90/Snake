@@ -7,6 +7,7 @@ class GameComponent {
  public:
   void Update();
   void Render();
+  const bool FromFile(const std::string line);
   void SetParentRendererHandle(Renderer* handle) {
     _parent_renderer_handle = handle;
   }

@@ -12,6 +12,7 @@ class Food : public GameComponent, public SDL_Point {
   Food(const std::size_t grid_width, const std::size_t grid_height);
   void Update();
   void Render();
+  const bool FromFile(const std::string line);
   friend std::ostream& operator<<(std::ostream& os, const Food& food);
 
  private:
