@@ -117,10 +117,9 @@ void Game::Save() {
 
 void Game::Menu(Controller::ControllerOutput& game_state) {
   bool input_handeled{false};
-  bool saved_game_available{false};
   int i = -1;
   while (!input_handeled) {
-    ShowMenuOptions(saved_game_available);
+    ShowMenuOptions();
     std::cin >> i;
     if (std::cin.fail()) {
       std::cin.clear();
