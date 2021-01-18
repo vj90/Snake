@@ -106,6 +106,7 @@ bool Snake::SnakeCell(int x, int y) {
 
 void Snake::Reset() {
   alive = true;
+  speed = 0.1;
   body.clear();
   head_x = grid_width / 2;
   head_y = grid_height / 2;
