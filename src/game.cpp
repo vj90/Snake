@@ -103,10 +103,11 @@ void Game::Save() {
   saved_game << _snake;
   saved_game << _food;
   saved_game.close();
-  std::ofstream high_score(_high_score_file);
-  high_score << _score;
-  high_score.close();
-}
+  if (_score > _last_high_score) {
+    std::ofstream high_score(_high_score_file);
+    high_score << _score;
+    high_score.close();
+  }
 }
 
 void Game::Menu(Controller::ControllerOutput& game_state) {
